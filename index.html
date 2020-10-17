@@ -1,32 +1,70 @@
-<div>
-    <p>Heads or Tails Chose a side, heads or tails. if the coin lands on your choice, you win</p>
+<!DOCTYPE html>
+<html>
 
-    <input id="heads" type ="radio" value="heads">
+<head>
+    <title>
+        Project 1
+    </title>
+    <meta charset="utf-8">
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js' defer></script>
+    <script src="script.js" defer> </script>
+</head>
 
-    <input id="tails" type ="radio" value="tails">
+<body>
+    <div id="app">
+        <div>
+            <p>Heads or Tails Chose a side, heads or tails. if the coin lands on your choice, you win</p>
 
-    <br/>
-    <br/>
-    <button>Flip</button>
+            <input v-on:click='playerSelection="heads"' id="heads" type="radio" value="heads" v-model='playerSelection'>
+            <input v-on:click='playerSelection="tails"' id="tails" type="radio" value="tails" v-model='playerSelection'>
 
-    <br/>
-    <br/>
-    <label> the coin landed on **** Player Won</label>
+            <br />
+            <br />
+            <button @click='flip'>Flip </button>
 
-    <br/>
-    <label> the coin landed on **** Computer Won</label>
+            <br />
+            <br />
+            <label> the coin landed on <b> {{ tossResult }} </b> , {{ winner }} </label>
 
-    <br/>
-    <br/>
-    <label> Score:</label>
+            <br />
+            <br />
+            <label> <b> Score: </b> </label>
 
-    <br/>
-    <br/>
-    <label> History:</label>
+            <br />
+            <label> Player: {{ playerScore }} </label>
 
-    <br/>
-    <br/>
-    <button>Reset</button>
+            <br />
+            <label> Computer: {{ computerScore }} </label>
 
+            <br />
+            <br />
+            <label> Round Count: {{ roundCount }} </label>
 
-</div>
+            <br />
+            <br />
+            <label> Player Selected: {{ playerSelection }} </label>
+            <br />
+            <label> Coputer Selected: {{ computerSelection }} </label>
+
+            <br />
+            <br />
+            <label> Toss Result: {{ tossResult }} </label>
+
+            <br />
+            <br />
+            <label> <b>History: </b></label>
+            
+            <br/>
+            <ul>
+                <li v-for="history in Histories">
+                    {{history}}
+                </li>
+            </ul>
+
+            <br />
+            <button @click="reset(Histories.length)">Reset</button>
+        </div>
+    </div>
+</body>
+
+</html>
