@@ -56,10 +56,7 @@
 
             <br />
             <div v-cloak>
-                <round-detail 
-                v-for='history in Histories' 
-                v-bind:key='history.key' 
-                v-bind:history='history'>
+                <round-detail v-for='history in Histories' v-bind:key='history.key' v-bind:history='history'>
                 </round-detail>
             </div>
 
@@ -67,6 +64,20 @@
             <button @click="reset(Histories.length)">Reset</button>
         </div>
     </div>
+
+    <br />
+    <br />
+    <label> <b>History: </b></label>
+
+    <br />
+    <div v-cloak>
+        <round-detail v-for='history in Histories' v-bind:key='history.key' v-bind:history='history'>
+        </round-detail>
+    </div>
+
+    <br />
+    <button @click="reset(Histories.length)">Reset</button>
+
 </body>
 
 </html>
