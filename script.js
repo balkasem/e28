@@ -23,8 +23,6 @@ const app = new Vue({
         computerScore: 0,
         playerSelection: '',
         playerScore: 0,
-        round: 1,
-        rounds: [],
         roundCount: 0,
         tossResult: '',
         winner: '',
@@ -77,7 +75,7 @@ const app = new Vue({
 
                 // 4- Set correct to true so the class binding color works
                 this.correct = false;
-            } ßß
+            }
         },
         reset(length) {
             this.Histories.splice(0, length);
