@@ -1,33 +1,20 @@
-// Vue.component('round-detail', {
-//     data() {
-//         return {
-//             deleted: false,
-//         }
-//     },
-//     template: `
-//     <div v-if='!deleted'>
-//         <ul>
-//             <li>Round #: TBD</li>
-//             <li>Winner: TBD</li>
-//         </ul>
-//         <button @click='deleteRound'>Delete round</button>
-//     </div>
-//     `,
-//     methods: {
-//         deleteRound() {
-//             this.deleted = true;
-//         }
-//     }
-// })
 
+// Vue Component:
 Vue.component('round-detail', {
-    data: function(){
+    data: function () {
         return {
             deleted: false
         }
     },
-    props: ['number', 'winner'],
-    template: '#round-detail',
+    props: ['history', 'roundCount'],
+    template: `
+        <div v-if='!deleted'>
+            <ul>
+                <li> {{ history[1] }}</li>
+                
+            </ul>
+        </div>
+    `,
     methods: {
         deleteRound: function () {
             this.deleted = true;
@@ -40,6 +27,7 @@ const app = new Vue({
     el: '#app',
     data: {
         Histories: [],
+        history: '',
 
         computerSelection: '',
         computerScore: 0,
@@ -56,14 +44,9 @@ const app = new Vue({
         tossResult: '',
         winner: '',
         randNumber: 0,
-        rounds: [
-            { number: 1, winner: 'Players' },
-            { number: 2, winner: 'Computers' },
-        ]
     },
     methods: {
         flip() {
-
             // Increase the round number upon flipping:
             this.roundCount++;
 
@@ -91,7 +74,7 @@ const app = new Vue({
                 this.playerScore++;
 
                 // 3- add to history array that player won roundCount
-                this.Histories.push('Player won round ' + this.roundCount);
+                this.Histories.push([this.roundCount, 'Player won round ' + this.roundCount]);
             }
             else {
                 // 1- Show computer is winner 
@@ -101,7 +84,7 @@ const app = new Vue({
                 this.computerScore++;
 
                 // 3- add to history that computer won roundCount
-                this.Histories.push('Computer won round ' + this.roundCount);
+                this.Histories.push([this.roundCount, 'Computer won round ' + this.roundCount]);
             }
         },
         reset(length) {

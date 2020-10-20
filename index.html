@@ -40,68 +40,26 @@
             <br />
             <label> Round Count: {{ roundCount }} </label>
 
-            <br />
+            <!-- <br />
             <br />
             <label> Player Selected: {{ playerSelection }} </label>
             <br />
-            <label> Coputer Selected: {{ computerSelection }} </label>
+            <label> Coputer Selected: {{ computerSelection }} </label> -->
 
+            <!-- <br />
             <br />
-            <br />
-            <label> Toss Result: {{ tossResult }} </label>
+            <label> Toss Result: {{ tossResult }} </label> -->
 
             <br />
             <br />
             <label> <b>History: </b></label>
 
             <br />
-            <ul>
-                <li v-for="history in Histories">
-                    {{history}}
-                </li>
-            </ul>
-
-            <!-- Component for History -->
-            <!-- <div id='app' v-cloak>
-                <round-detail></round-detail>
-            </div> -->
-
-            <!-- <script type='text/x-template' id='round-detail'>
-                <div v-if='!deleted'>
-                    <ul>
-                        <li>Round #: TBD</li>
-                        <li>Winner: TBD</li>
-                    </ul>
-                    <button @click='deleteRound'>Delete round</button>
-                </div>
-            </script> -->
-
-            <!-- TEMPLATE FOR OUR COMPONENT -->
-            <script type='text/x-template' id='round-detail'>
-                <div v-if='!deleted'>
-                    <ul>
-                        <li>Round #: {{ number }}  </li>
-                        <li>Winner: {{ winner }}</li>
-                    </ul>
-                    <button @click='deleteRound'>Delete round</button>
-                </div>
-            </script>
-
-            <!-- TEMPLATE FOR OUR ROOT VUE INSTANCE -->
-            <!-- <div id='app' v-cloak>
-                <div id='app' v-cloak>
-                    <round-detail number=1 winner='Player'></round-detail>
-                    <round-detail number=2 winner='Player'></round-detail>
-                    <round-detail number=3 winner='Computer'></round-detail>
-                </div>
-            </div> -->
-
             <div id='app' v-cloak>
                 <round-detail 
-                    v-for='round in rounds' 
-                    v-bind:key='round.number' 
-                    v-bind:number='round.number' 
-                    v-bind:winner='round.winner'>
+                v-for='history in Histories' 
+                v-bind:key='history.key' 
+                v-bind:history='history'>
                 </round-detail>
             </div>
 
