@@ -81,6 +81,7 @@ const app = new Vue({
             this.tossResult = '';
             this.playerSelection = 0;
             this.computerSelection = 0;
+            this.winner = '';
         },
     },
     watch: {
