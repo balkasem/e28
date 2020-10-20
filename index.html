@@ -12,6 +12,10 @@
         [v-cloak] {
             display: none
         }
+
+        .resultsColor {
+            color: red;
+        }
     </style>
 </head>
 
@@ -31,7 +35,9 @@
             <br />
 
             <div v-if='roundCount != 0'>
-                <label> the coin landed on <b> {{ tossResult }} </b> , {{ winner }} </label>
+                <div v-bind:class='{resultsColor : !correct}'>
+                    <label> The coin landed on <b> {{ tossResult }} </b> , {{ winner }} </label>
+                </div>
             </div>
 
             <br />

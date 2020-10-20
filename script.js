@@ -29,6 +29,7 @@ const app = new Vue({
         tossResult: '',
         winner: '',
         randNumber: 0,
+        correct: null,
     },
     methods: {
         flip() {
@@ -60,6 +61,9 @@ const app = new Vue({
 
                 // 3- add to history array that player won roundCount
                 this.Histories.push([this.roundCount, 'Player won round ' + this.roundCount]);
+                
+                // 4- Set correct to true so the class binding color works
+                this.correct = true;
             }
             else {
                 // 1- Show computer is winner 
@@ -70,6 +74,9 @@ const app = new Vue({
 
                 // 3- add to history that computer won roundCount
                 this.Histories.push([this.roundCount, 'Computer won round ' + this.roundCount]);
+                
+                // 4- Set correct to true so the class binding color works
+                this.correct = false;
             }
         },
         reset(length) {
@@ -81,6 +88,7 @@ const app = new Vue({
             this.playerSelection = 0;
             this.computerSelection = 0;
             this.winner = '';
+            this.correct= null;
         },
     },
     watch: {
