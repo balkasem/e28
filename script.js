@@ -1,4 +1,3 @@
-
 // Vue Component:
 Vue.component('round-detail', {
     data: function () {
