@@ -16,6 +16,27 @@
         .resultsColor {
             color: red;
         }
+
+        body {
+            background-color: silver;
+        }
+
+        img {
+            height: 100px;
+            width: 100px;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        input[type=radio] {
+            display: none;
+        }
     </style>
 </head>
 
@@ -23,48 +44,47 @@
     <div id="app" v-cloak>
         <div>
             <p>Heads or Tails Chose a side, heads or tails. if the coin lands on your choice, you win</p>
-
-            <input v-on:click='playerSelection="heads"' id="heads" type="radio" value="heads" v-model='playerSelection'>
-            <input v-on:click='playerSelection="tails"' id="tails" type="radio" value="tails" v-model='playerSelection'>
-
             <br />
-            <br />
+            <!-- <img src="Heads or Tails.png"> -->
+            <input v-on:click='playerSelection="heads"' id="heads" name="coin" type="radio" value="heads"
+                v-model='playerSelection'>
+            <label for="heads">
+                <img src="Heads.jpg">
+            </label>
+            <input v-on:click='playerSelection="tails"' id="tails" name="coin" type="radio" value="tails"
+                v-model='playerSelection'>
+            <label for="tails">
+                <img src="tailsCoin.png">
+            </label>
+            <p> Player selected: <b> {{ playerSelection }} </b> </p>
             <button @click='flip'>Flip </button>
-
+            <button @click="reset(Histories.length)">Reset</button>
             <br />
             <br />
-
             <div v-if='roundCount != 0'>
                 <div v-bind:class='{resultsColor : !correct}'>
                     <label> The coin landed on <b> {{ tossResult }} </b> , {{ winner }} </label>
                 </div>
             </div>
-
             <br />
             <label> <b> Score: </b> </label>
-
+            <br />
             <br />
             <label> Player: {{ playerScore }} </label>
-
             <br />
             <label> Computer: {{ computerScore }} </label>
-
             <br />
             <br />
-            <label> Round Count: {{ roundCount }} </label>
-
+            <label> <b>Round Count: {{ roundCount }} </b> </label>
             <br />
             <br />
             <label> <b>History: </b></label>
-
             <br />
             <div v-cloak>
                 <round-detail v-for='history in Histories' v-bind:key='history.key' v-bind:history='history'>
                 </round-detail>
             </div>
-
             <br />
-            <button @click="reset(Histories.length)">Reset</button>
         </div>
     </div>
 </body>

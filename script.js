@@ -61,7 +61,7 @@ const app = new Vue({
 
                 // 3- add to history array that player won roundCount
                 this.Histories.push([this.roundCount, 'Player won round ' + this.roundCount]);
-                
+
                 // 4- Set correct to true so the class binding color works
                 this.correct = true;
             }
@@ -74,10 +74,10 @@ const app = new Vue({
 
                 // 3- add to history that computer won roundCount
                 this.Histories.push([this.roundCount, 'Computer won round ' + this.roundCount]);
-                
+
                 // 4- Set correct to true so the class binding color works
                 this.correct = false;
-            }
+            } ßß
         },
         reset(length) {
             this.Histories.splice(0, length);
@@ -85,10 +85,10 @@ const app = new Vue({
             this.playerScore = 0;
             this.computerScore = 0;
             this.tossResult = '';
-            this.playerSelection = 0;
+            this.playerSelection = '';
             this.computerSelection = 0;
             this.winner = '';
-            this.correct= null;
+            this.correct = null;
         },
     },
     watch: {
