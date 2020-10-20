@@ -1,7 +1,42 @@
+// Vue.component('round-detail', {
+//     data() {
+//         return {
+//             deleted: false,
+//         }
+//     },
+//     template: `
+//     <div v-if='!deleted'>
+//         <ul>
+//             <li>Round #: TBD</li>
+//             <li>Winner: TBD</li>
+//         </ul>
+//         <button @click='deleteRound'>Delete round</button>
+//     </div>
+//     `,
+//     methods: {
+//         deleteRound() {
+//             this.deleted = true;
+//         }
+//     }
+// })
+
+Vue.component('round-detail', {
+    data: function(){
+        return {
+            deleted: false
+        }
+    },
+    props: ['number', 'winner'],
+    template: '#round-detail',
+    methods: {
+        deleteRound: function () {
+            this.deleted = true;
+        }
+    }
+})
 
 // The Vue instance
 const app = new Vue({
-    // Option
     el: '#app',
     data: {
         Histories: [],
@@ -20,7 +55,11 @@ const app = new Vue({
 
         tossResult: '',
         winner: '',
-        randNumber: 0
+        randNumber: 0,
+        rounds: [
+            { number: 1, winner: 'Players' },
+            { number: 2, winner: 'Computers' },
+        ]
     },
     methods: {
         flip() {
@@ -37,7 +76,7 @@ const app = new Vue({
                 this.tossResult = 'heads';
             }
             else {
-            //   3- Assign tails if the random number is 2:
+                //   3- Assign tails if the random number is 2:
                 if (randNumber == 2) {
                     this.tossResult = 'tails';
                 }
@@ -47,10 +86,10 @@ const app = new Vue({
             if (this.playerSelection == this.tossResult) {
                 // 1- show player is winner:
                 this.winner = 'You won the toss';
-                
+
                 // 2- increase player score, 
                 this.playerScore++;
-                
+
                 // 3- add to history array that player won roundCount
                 this.Histories.push('Player won round ' + this.roundCount);
             }
@@ -63,7 +102,7 @@ const app = new Vue({
 
                 // 3- add to history that computer won roundCount
                 this.Histories.push('Computer won round ' + this.roundCount);
-            }            
+            }
         },
         reset(length) {
             this.Histories.splice(0, length);
