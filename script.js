@@ -6,7 +6,7 @@ Vue.component('round-detail', {
             deleted: false
         }
     },
-    props: ['history', 'roundCount'],
+    props: ['history'],
     template: `
             <ul>
                 <li> {{ history[1] }}</li>
@@ -20,19 +20,13 @@ const app = new Vue({
     data: {
         Histories: [],
         history: '',
-
         computerSelection: '',
         computerScore: 0,
-
         playerSelection: '',
         playerScore: 0,
-
         round: 1,
         rounds: [],
-
         roundCount: 0,
-        roundCount2: null,
-
         tossResult: '',
         winner: '',
         randNumber: 0,
