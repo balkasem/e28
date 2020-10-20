@@ -8,18 +8,10 @@ Vue.component('round-detail', {
     },
     props: ['history', 'roundCount'],
     template: `
-        <div v-if='!deleted'>
             <ul>
                 <li> {{ history[1] }}</li>
-                
             </ul>
-        </div>
     `,
-    methods: {
-        deleteRound: function () {
-            this.deleted = true;
-        }
-    }
 })
 
 // The Vue instance

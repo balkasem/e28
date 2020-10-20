@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        Project 1 ( Component Applied )
+        Project 1 
     </title>
     <meta charset="utf-8">
     <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js' defer></script>
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" v-cloak >
         <div>
             <p>Heads or Tails Chose a side, heads or tails. if the coin lands on your choice, you win</p>
 
@@ -40,26 +40,13 @@
             <br />
             <label> Round Count: {{ roundCount }} </label>
 
-            <!-- <br />
-            <br />
-            <label> Player Selected: {{ playerSelection }} </label>
-            <br />
-            <label> Coputer Selected: {{ computerSelection }} </label> -->
-
-            <!-- <br />
-            <br />
-            <label> Toss Result: {{ tossResult }} </label> -->
-
             <br />
             <br />
             <label> <b>History: </b></label>
 
             <br />
             <div v-cloak>
-                <round-detail 
-                v-for='history in Histories' 
-                v-bind:key='history.key' 
-                v-bind:history='history'>
+                <round-detail v-for='history in Histories' v-bind:key='history.key' v-bind:history='history'>
                 </round-detail>
             </div>
 
