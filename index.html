@@ -29,7 +29,10 @@
 
             <br />
             <br />
-            <label> the coin landed on <b> {{ tossResult }} </b> , {{ winner }} </label>
+
+            <div v-if='roundCount != 0'>
+                <label> the coin landed on <b> {{ tossResult }} </b> , {{ winner }} </label>
+            </div>
 
             <br />
             <br />
