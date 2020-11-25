@@ -1,5 +1,5 @@
 <template>
-  <div id="products">
+  <div id="posts">
     <h2> All Posts</h2>
     <router-link v-for="post in posts" :key="post.id" v-bind:to="'/posts/' + post.id" exact>
       <show-post :post="post"></show-post>
@@ -18,7 +18,6 @@ export default {
   props: ["posts"],
   data: function() {
     return {
-      // products: [],
     };
   }
 };

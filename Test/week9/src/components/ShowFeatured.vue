@@ -1,44 +1,33 @@
-<!-- src/components/ShowFeatured.vue -->
 <template>
   <div id="featured">
-    <h2> My Favorite Posts</h2>
+    <h2>My Favorite Posts</h2>
     <ul class="cleanList">
-      <li v-for="product in featuredProducts" :key="product.id">{{ product.title }} </li>
+      <li v-for="post in favoritePosts" :key="post.id">{{ post.title }}</li>
     </ul>
   </div>
 </template>
 
 <script>
-// import { products } from "@/products.js";
-
 import { axios } from "@/app.js";
 
 export default {
   name: "show-featured",
-  props: ["category"],
+  props: ["favorite"],
   data: function() {
     return {
-      posts: [],
+      posts: []
     };
   },
   computed: {
-    featuredProducts() {
+    favoritePosts() {
       return this.posts.filter(post => {
-        return post.favorite.includes(this.category);
-      }, this.category);
+        return post.favorite.includes(this.favorite);
+      }, this.favorite);
     }
   },
-  // computed: {
-  //   featuredProducts() {
-  //     return this.products.filter(product => {
-  //       return product.categories.includes(this.category);
-  //     }, this.category);
-  //   }
-  // },
   mounted() {
     axios.get("/post").then(response => {
       this.posts = response.data.post;
-      // console.log(response.data);
     });
   }
 };

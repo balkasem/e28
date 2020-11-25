@@ -1,17 +1,17 @@
 <template>
   <div>
-    <h1>Show Posts Id: {{ id }}</h1>
+    <h1>
+      ( Coming Soon in project 3 )
+      <br />
+      Post Id: {{ id }}
+    </h1>
 
     <show-post :product="product" :includeDetails="true"></show-post>
   </div>
 </template>
 
 <script>
-import { products } from "@/products.js";
 import ShowPost from "@/components/ShowPost.vue";
-
-// import { axios } from "@/app.js";
-
 
 export default {
   name: "",
@@ -20,21 +20,8 @@ export default {
     "show-post": ShowPost
   },
   data() {
-    return {
-      product: null,
-      products: products,
-      productNotFound: false
-    };
+    return {};
   },
-  mounted() {
-    this.product = this.products.filter(product => {
-      return product.id == this.id;
-    }, this.id)[0];
-    
-
-    if (this.product == null) {
-      this.productNotFound = true;
-    }
-  }
+  mounted() {}
 };
 </script>

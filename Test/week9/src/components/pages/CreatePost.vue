@@ -5,22 +5,23 @@
     <div id="inputs">
       <label for="title">Title</label>
       <input type="text" v-model="post.title" id="title" />
+      <br />
+      <br />
 
       <label for="content">Content:</label>
       <input type="text" v-model="post.content" id="content" />
+      <br />
+      <br />
 
       <label for="auther">Auther:</label>
       <input type="text" v-model="post.auther" id="auther" />
-
+      <br />
+      <br />
+      
       <label for="favorite" class="form-checkbox-label">
-                <input
-                    type="checkbox"
-                    v-model="post.favorite"
-                    id="favorite"
-                />
-                Favorite?
-            </label>
-
+        <input type="checkbox" v-model="post.favorite" id="favorite" />
+        Favorite?
+      </label>
     </div>
 
     <button @click="addPost">Add Post</button>
