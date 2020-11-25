@@ -39,7 +39,6 @@ export default {
   mounted() {
     axios.get("/post").then(response => {
       this.posts = response.data.post;
-      // console.log(response.data);
     });
   }
 };
