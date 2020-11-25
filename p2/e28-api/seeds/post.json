@@ -1,0 +1,22 @@
+{
+    "seeds": [
+        {
+            "title": "Social Impact",
+            "content": "Social impact of tech projects ..",
+            "auther": "Osama Balkasem",
+            "favorite": true
+        },
+        {
+            "title": "Self-Awareness",
+            "content": "benefits of self-awareness .. ",
+            "auther": "Osama Balkasem",
+            "favorite": false
+        },
+        {
+            "title": "Reflection",
+            "content": "consequences of reflection .. ",
+            "auther": "Osama Balkasem",
+            "favorite": true
+        }
+    ]
+}
