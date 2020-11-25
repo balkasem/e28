@@ -1,19 +1,48 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome TEST to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <nav>
+      <ul>
+        <li>
+          <router-link
+            v-for="link in links"
+            v-bind:key="link"
+            v-bind:to="paths[link]"
+            exact
+          >{{ link }}      </router-link>
+        </li>
+      </ul>
+    </nav>
+    <router-view v-bind:posts="posts"></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { axios } from "@/app.js";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: '',
+  data: function() {
+    return {
+      posts: [],
+      links: ["Home", "Posts", "CreatePost"],
+
+      /* Map links to the appropriate component */
+      paths: {
+        Home: "/",
+        Posts: "/posts",
+        Categories: "/categories",
+        CreatePost: "/posts/new"
+      }
+    };
+  },
+  mounted() {
+    axios.get("/post").then(response => {
+      this.posts = response.data.post;
+      // console.log(response.data);
+    });
   }
-}
+};
 </script>
 
 <style>
