@@ -1,0 +1,20 @@
+{
+    "post":{
+        "title": {
+            "type": "string",
+            "validators": []
+        },
+        "content": {
+            "type": "text",
+            "validators": []
+        },
+        "auther": {
+            "type": "string",
+            "validators": []
+        },
+        "favorite": {
+            "type": "boolean",
+            "validators": []
+        }
+    }
+}
