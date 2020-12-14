@@ -18,13 +18,13 @@
 </template>
 
 <script>
-import { axios } from "@/app.js";
+// import { axios } from "@/app.js";
 
 export default {
   name: '',
   data: function() {
     return {
-      posts: [],
+      //posts: [],
       links: ["Home", "Posts", "CreatePost"],
 
       /* Map links to the appropriate component */
@@ -37,10 +37,19 @@ export default {
     };
   },
   mounted() {
-    axios.get("/post").then(response => {
-      this.posts = response.data.post;
-    });
-  }
+    // axios.get("/post").then(response => {
+    //   this.posts = response.data.post;
+    // });
+
+    this.$store.dispatch('fetchPosts');
+
+    //this.$store.commit('setCartCount', 3);
+  },
+  computed: {
+    posts(){
+        return this.$store.state.posts;
+    }
+  },
 };
 </script>
 

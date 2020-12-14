@@ -4,18 +4,21 @@
 
     <div id="inputs">
       <label for="title">Title</label>
-      <input type="text" v-model="post.title" id="title" />
+      <input type="text" v-model="post.title" id="title" v-on:blur="validate()" />
       <br />
+      <error-field v-if="errors && 'title' in errors" :errors="errors.title"></error-field>
       <br />
 
       <label for="content">Content:</label>
-      <input type="text" v-model="post.content" id="content" />
+      <input type="text" v-model="post.content" id="content"  v-on:blur="validate()" />
       <br />
+      <error-field v-if="errors && 'content' in errors" :errors="errors.content"></error-field>
       <br />
 
       <label for="auther">Auther:</label>
-      <input type="text" v-model="post.auther" id="auther" />
+      <input type="text" v-model="post.auther" id="auther"  v-on:blur="validate()" />
       <br />
+      <error-field v-if="errors && 'auther' in errors" :errors="errors.auther"></error-field>
       <br />
       
       <label for="favorite" class="form-checkbox-label">
@@ -30,24 +33,49 @@
 
 <script>
 import { axios } from "@/app.js";
+import Validator from 'validatorjs';
+import ErrorField from '@/components/ErrorField.vue';
 
 export default {
+  components: {
+        'error-field': ErrorField
+    },
   data() {
     return {
+      errors: null,
       post: {
-        title: "New Article",
-        content: "content of my new post",
-        auther: "Sam Balkasem",
+        title: null,
+        content: null,
+        auther: null,
         favorite: true
       }
     };
   },
   methods: {
+
+    validate() {
+    let validator = new Validator(this.post, {
+        title: 'required|between:3,100',
+        content: 'required|between:3,100',
+        auther: 'required|between:3,100',
+    });
+
+    this.errors = validator.errors.all();
+
+    return validator.passes();
+  },
+  
     addPost() {
-      axios.post("/post", this.post).then(response => {
-        console.log(response.data);
-      });
+  console.log("Invoked At Post !! ");
+  if( this.errors == 0 ){
+
+        axios.post("/post", this.post).then(response => {
+          console.log(response.data);
+        });
+      
+      }
     }
+
   }
 };
 </script>
