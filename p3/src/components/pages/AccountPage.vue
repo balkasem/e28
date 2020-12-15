@@ -9,7 +9,7 @@
                     No Posts yet.
                 </p>
                 <li v-for="(post, key) in userPosts" v-bind:key="key">
-                    {{ userPosts.id }}
+                    {{ post.title }}
                 </li>
             </div>
 
@@ -98,11 +98,13 @@ export default {
                         // Iterate through the posts (response.data.results), loading the post information for each post
                         this.userPosts = response.data.post.map(
                             (post) => {
+                                //console.log(this.post);
                                 return this.$store.getters.getPosts(
                                     post.id
                                 );
                             }
                         );
+                        //console.log(this.$store.getters.getPosts( post.id ));
                         console.log(this.userPosts);
                     });
             }

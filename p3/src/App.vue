@@ -42,7 +42,7 @@ export default {
     //   this.posts = response.data.post;
     // });
 
-    
+    this.$store.dispatch('fetchPosts');
 
     this.$store.dispatch('authUser');
 
@@ -57,6 +57,7 @@ export default {
         // When user changes, update posts
         user() {
             if (this.user) {
+              console.log(this.user);
                 this.$store.dispatch('fetchPosts');
             }
         },

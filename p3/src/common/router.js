@@ -37,19 +37,6 @@ const routes = [
             requiresAuth: true
         }
     },
-    // {
-    //     path: '/products/:id',
-    //     component: () => import('@/components/pages/ProductPage.vue'),
-    //     props: true,
-    // },
-    // {
-    //     path: '/account',
-    //     component: () => import('@/components/pages/AccountPage.vue'),
-    // },
-    // {
-    //     path: '/cart',
-    //     // component: () => import('@/components/pages/CartPage.vue'),
-    // },
     {
         // This is a route we can direct the user to if they try to access a part of the site they don't have privileges for
         path: '/denied',

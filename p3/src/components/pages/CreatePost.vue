@@ -60,24 +60,21 @@ export default {
         auther: 'required|between:3,100',
     });
 
-    this.errors = validator.errors.all();
-      console.log(this.errors.length);
-    return validator.passes();
-  },
-  
+      if (validator.fails()) {
+            this.errors = validator.errors.all();
+        } else {
+            this.errors = null;
+        }
+
+        return validator.passes();
+    },
     addPost() {
-  console.log("Invoked At Post !! ");
-  console.log(this.errors.errorCount);
-
-  if( this.errors.length == 0 ){
-
-        axios.post("/post", this.post).then(response => {
-          console.log(response.data);
-        });
-      
-      }
+        if (this.validate()) {
+            axios.post('/post', this.post).then(response => {
+                console.log(response.data);
+            });
+        }
     }
-
   }
 };
 </script>
