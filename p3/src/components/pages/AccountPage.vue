@@ -88,6 +88,7 @@ export default {
         // When user changes, update posts
         user() {
             if (this.user) {
+                
                 this.userPosts = [];
                 console.log(this.userPosts);
                 axios
@@ -112,3 +113,4 @@ export default {
     }
 };
 </script>
+
