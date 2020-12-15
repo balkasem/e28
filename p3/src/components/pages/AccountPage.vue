@@ -5,11 +5,11 @@
 
             <div id="posts">
                 <strong>Your Posts</strong>
-                <p v-if="posts && posts.length == 0">
+                <p v-if="userPosts && userPosts.length == 0">
                     No Posts yet.
                 </p>
-                <li v-for="(post, key) in posts" v-bind:key="key">
-                    {{ post.title }}
+                <li v-for="(post, key) in userPosts" v-bind:key="key">
+                    {{ userPosts.id }}
                 </li>
             </div>
 
@@ -55,16 +55,16 @@ export default {
                 password: 'asdfasdf',
             },
             errors: null,
-            //posts: null,
+            userPosts: null,
         };
     },
     computed: {
         user() {
             return this.$store.state.user;
         },
-        posts() {
-            return this.$store.state.posts;
-        },
+        // posts() {
+        //     return this.$store.state.posts;
+        // },
     },
     methods: {
         login() {
@@ -88,21 +88,22 @@ export default {
         // When user changes, update posts
         user() {
             if (this.user) {
-                this.posts = [];
-
+                this.userPosts = [];
+                console.log(this.userPosts);
                 axios
-                    .get('post/', {
-                        params: { user_id: this.user.id },
+                    .get('post', {
+                        //params: { user_id: this.user.id },
                     })
                     .then((response) => {
                         // Iterate through the posts (response.data.results), loading the post information for each post
-                        this.posts = response.data.results.map(
+                        this.userPosts = response.data.post.map(
                             (post) => {
                                 return this.$store.getters.getPosts(
-                                    post.user_id
+                                    post.id
                                 );
                             }
                         );
+                        console.log(this.userPosts);
                     });
             }
         },
