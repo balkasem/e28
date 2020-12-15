@@ -6,8 +6,11 @@ import HomePage from "@/components/pages/HomePage.vue";
 import PostsPage from "@/components/pages/PostsPage.vue";
 import CreatePost from "@/components/pages/CreatePost.vue";
 import PostPage from "@/components/pages/PostPage.vue";
+import AccountPage from "@/components/pages/AccountPage.vue";
 
 import store from '@/common/store.js';
+
+// import router from '@/common/router.js';
 
 Vue.config.productionTip = false
 
@@ -19,6 +22,7 @@ const router = new VueRouter({
     { path: '/posts', component: PostsPage },
     { path: '/posts/new', component: CreatePost, props: true },
     { path: '/posts/:id', component: PostPage, props: true },
+    { path: '/account', component: AccountPage },
   ],
   mode: 'history',
 })

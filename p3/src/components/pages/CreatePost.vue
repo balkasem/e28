@@ -61,13 +61,15 @@ export default {
     });
 
     this.errors = validator.errors.all();
-
+      console.log(this.errors.length);
     return validator.passes();
   },
   
     addPost() {
   console.log("Invoked At Post !! ");
-  if( this.errors == 0 ){
+  console.log(this.errors.errorCount);
+
+  if( this.errors.length == 0 ){
 
         axios.post("/post", this.post).then(response => {
           console.log(response.data);

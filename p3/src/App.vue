@@ -25,14 +25,15 @@ export default {
   data: function() {
     return {
       //posts: [],
-      links: ["Home", "Posts", "CreatePost"],
+      links: ["Home", "Posts", "Account" ,"CreatePost"],
 
       /* Map links to the appropriate component */
       paths: {
         Home: "/",
         Posts: "/posts",
         Categories: "/categories",
-        CreatePost: "/posts/new"
+        CreatePost: "/posts/new",
+        Account: "/account"
       }
     };
   },
@@ -42,6 +43,8 @@ export default {
     // });
 
     this.$store.dispatch('fetchPosts');
+
+    this.$store.dispatch('authUser');
 
     //this.$store.commit('setCartCount', 3);
   },

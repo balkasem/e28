@@ -15,6 +15,13 @@
         "favorite": {
             "type": "boolean",
             "validators": []
+        },
+        "user_id": {
+            "type": "integer",
+            "validators": [
+                "required",
+                "numeric"
+            ]
         }
     }
 }

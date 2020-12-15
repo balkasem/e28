@@ -4,19 +4,22 @@
             "title": "Social Impact",
             "content": "Social impact of tech projects ..",
             "auther": "Osama Balkasem",
-            "favorite": true
+            "favorite": true,
+            "user_id": 1
         },
         {
             "title": "Self-Awareness",
             "content": "benefits of self-awareness .. ",
             "auther": "Osama Balkasem",
-            "favorite": false
+            "favorite": false,
+            "user_id": 1
         },
         {
             "title": "Reflection",
             "content": "consequences of reflection .. ",
             "auther": "Osama Balkasem",
-            "favorite": true
+            "favorite": true,
+            "user_id": 2
         }
     ]
 }
