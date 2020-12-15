@@ -5,4 +5,15 @@ describe('My First Test', () => {
     cy.visit('/')
     cy.contains('p', 'Home Page for my Blog - Articles Written by Osama Balkasem')
   })
+
+
+  it('display all posts', () => {
+    cy.visit('/posts')
+    cy.contains('div','Social Impact');
+  })
+
+  // create post
+
+  // login / logout
+
 })
