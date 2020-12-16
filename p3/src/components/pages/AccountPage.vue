@@ -1,7 +1,7 @@
 <template>
     <div id="account-page">
         <div v-if="user">
-            <h2>Hi, {{ user.name }}!</h2>
+            <h2 data-test="welcome-message" >Hi, {{ user.name }}!</h2>
 
             <div id="posts">
                 <strong>Your Posts</strong>
@@ -13,7 +13,7 @@
                 </li>
             </div>
 
-            <button @click="logout">Logout</button>
+            <button @click="logout" data-test="logout-button" >Logout</button>
         </div>
 
         <div v-else id="loginForm">
@@ -23,15 +23,15 @@
                 application)</small
             >
             <div>
-                <label>Email: <input type="text" v-model="data.email" /></label>
+                <label>Email: <input type="text" v-model="data.email" data-test="email-input" /></label>
             </div>
             <div>
                 <label
-                    >Password: <input type="password" v-model="data.password"
+                    >Password: <input data-test="password-input" type="password" v-model="data.password"
                 /></label>
             </div>
 
-            <button @click="login">Login</button>
+            <button @click="login" data-test="login-button" >Login</button>
 
             <ul v-if="errors">
                 <li class="error" v-for="(error, index) in errors" :key="index">
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-//import { axios } from '@/common/app.js';
+
 import { axios } from "@/app.js";
 
 export default {
@@ -82,10 +82,8 @@ export default {
         loadPosts(){
             if (this.user) {
             this.userPosts = [];
-                //console.log(this.userPosts);
                 axios
                     .get('post', {
-                        //params: { user_id: this.user.id },
                     })
                     .then((response) => {
                         // Iterate through the posts (response.data.results), loading the post information for each post
@@ -96,7 +94,6 @@ export default {
                                 );
                             }
                         );
-                        //console.log(this.userPosts);
                     });
         }
         }

@@ -9,6 +9,7 @@
             v-bind:key="link"
             v-bind:to="paths[link]"
             exact
+            :data-test="link + '-link'"
           >{{ link }}      </router-link>
         </li>
       </ul>
@@ -18,13 +19,11 @@
 </template>
 
 <script>
-// import { axios } from "@/app.js";
 
 export default {
   name: '',
   data: function() {
     return {
-      //posts: [],
       links: ["Home", "Posts", "Account" ,"CreatePost"],
 
       /* Map links to the appropriate component */
@@ -38,15 +37,9 @@ export default {
     };
   },
   mounted() {
-    // axios.get("/post").then(response => {
-    //   this.posts = response.data.post;
-    // });
-
     this.$store.dispatch('fetchPosts');
 
     this.$store.dispatch('authUser');
-
-    //this.$store.commit('setCartCount', 3);
   },
   computed: {
     posts(){
