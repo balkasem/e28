@@ -49,7 +49,6 @@ import { axios } from "@/app.js";
 export default {
     data() {
         return {
-            // Form is prefilled for demonstration purposes; remove in final application
             data: {
                 email: 'jill@harvard.edu',
                 password: 'asdfasdf',
@@ -62,9 +61,6 @@ export default {
         user() {
             return this.$store.state.user;
         },
-        // posts() {
-        //     return this.$store.state.posts;
-        // },
     },
     methods: {
         login() {
@@ -83,11 +79,10 @@ export default {
                 }
             });
         },
-        
         loadPosts(){
             if (this.user) {
             this.userPosts = [];
-                console.log(this.userPosts);
+                //console.log(this.userPosts);
                 axios
                     .get('post', {
                         //params: { user_id: this.user.id },
@@ -96,44 +91,20 @@ export default {
                         // Iterate through the posts (response.data.results), loading the post information for each post
                         this.userPosts = response.data.post.map(
                             (post) => {
-                                //console.log(this.post);
                                 return this.$store.getters.getPosts(
                                     post.id
                                 );
                             }
                         );
-                        //console.log(this.$store.getters.getPosts( post.id ));
-                        console.log(this.userPosts);
+                        //console.log(this.userPosts);
                     });
         }
         }
-
     },
     watch: {
         // When user changes, update posts
         user() {
-            // if (this.user) {
                 this.loadPosts();
-                // this.userPosts = [];
-                // console.log(this.userPosts);
-                // axios
-                //     .get('post', {
-                //         //params: { user_id: this.user.id },
-                //     })
-                //     .then((response) => {
-                //         // Iterate through the posts (response.data.results), loading the post information for each post
-                //         this.userPosts = response.data.post.map(
-                //             (post) => {
-                //                 //console.log(this.post);
-                //                 return this.$store.getters.getPosts(
-                //                     post.id
-                //                 );
-                //             }
-                //         );
-                //         //console.log(this.$store.getters.getPosts( post.id ));
-                //         console.log(this.userPosts);
-                //     });
-            // }
         },
     },
     mounted() {
@@ -141,4 +112,3 @@ export default {
     },
 };
 </script>
-
