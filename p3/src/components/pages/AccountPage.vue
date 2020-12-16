@@ -83,10 +83,10 @@ export default {
                 }
             });
         },
+        
         loadPosts(){
             if (this.user) {
-                
-                this.userPosts = [];
+            this.userPosts = [];
                 console.log(this.userPosts);
                 axios
                     .get('post', {
@@ -105,40 +105,40 @@ export default {
                         //console.log(this.$store.getters.getPosts( post.id ));
                         console.log(this.userPosts);
                     });
-            }
         }
+        }
+
     },
     watch: {
         // When user changes, update posts
         user() {
-            this.loadPosts();
             // if (this.user) {
-                
-            //     this.userPosts = [];
-            //     console.log(this.userPosts);
-            //     axios
-            //         .get('post', {
-            //             //params: { user_id: this.user.id },
-            //         })
-            //         .then((response) => {
-            //             // Iterate through the posts (response.data.results), loading the post information for each post
-            //             this.userPosts = response.data.post.map(
-            //                 (post) => {
-            //                     //console.log(this.post);
-            //                     return this.$store.getters.getPosts(
-            //                         post.id
-            //                     );
-            //                 }
-            //             );
-            //             //console.log(this.$store.getters.getPosts( post.id ));
-            //             console.log(this.userPosts);
-            //         });
+                this.loadPosts();
+                // this.userPosts = [];
+                // console.log(this.userPosts);
+                // axios
+                //     .get('post', {
+                //         //params: { user_id: this.user.id },
+                //     })
+                //     .then((response) => {
+                //         // Iterate through the posts (response.data.results), loading the post information for each post
+                //         this.userPosts = response.data.post.map(
+                //             (post) => {
+                //                 //console.log(this.post);
+                //                 return this.$store.getters.getPosts(
+                //                     post.id
+                //                 );
+                //             }
+                //         );
+                //         //console.log(this.$store.getters.getPosts( post.id ));
+                //         console.log(this.userPosts);
+                //     });
             // }
         },
-        mounted(){
-            this.loadPosts();
-        }
-    }
+    },
+    mounted() {
+        this.loadPosts();
+    },
 };
 </script>
 
